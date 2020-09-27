@@ -16,13 +16,15 @@
                 value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url"
                 value="jdbc:mysql://localhost:3306/avaliacao?serverTimezone=UTC" />
-            <property name="javax.persistence.jdbc.user" value="root" />
-<property name="javax.persistence.jdbc.password" value="adm1n" />
-<property name="hibernate.dialect"
-value="org.hibernate.dialect.MySQL5Dialect" />
-<property name="hibernate.show_sql" value="true" />
-<property name="hibernate.format_sql" value="true" />
-<property name="hibernate.hbm2ddl.auto" value="validate" />
-</properties>
-</persistence-unit>
+            <property name="javax.persistence.jdbc.user" value="user" />
+            <property name="javax.persistence.jdbc.password" value="pass123" />
+            <property name="hibernate.dialect"
+                value="org.hibernate.dialect.MySQL5Dialect" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="validate" />
+        </properties>
+    
+    </persistence-unit>
+
 </persistence>
