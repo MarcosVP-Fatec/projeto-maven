@@ -18,24 +18,26 @@ create table alu_aluno (
     constraint alu_ra_uk unique (alu_ra)
 );
 
-
-
+-- PROFESSOR
 create table pro_professor (
-pro_id bigint unsigned primary key auto_increment,
-pro_nome_usuario varchar(50) not null,
-pro_senha varchar(50) not null,
-pro_titulo varchar(10),
-constraint pro_nome_usuario_uk unique (pro_nome_usuario)
+    pro_id              bigint unsigned primary key auto_increment,
+    pro_nome_usuario    varchar(50) not null,
+    pro_senha           varchar(50) not null,
+    pro_titulo          varchar(10),
+    constraint pro_nome_usuario_uk unique (pro_nome_usuario)
 );
+
+-- TRABALHO
 create table tra_trabalho (
-tra_id bigint unsigned primary key auto_increment,
-tra_titulo varchar(50) not null,
-tra_data_hora_entrega datetime not null,
-tra_local_arquivo varchar(200) not null,
-pro_avaliador_id bigint unsigned,
-constraint tra_pro_fk foreign key (pro_avaliador_id)
-references pro_professor (pro_id)
+    tra_id                  bigint unsigned primary key auto_increment,
+    tra_titulo              varchar(50)     not null,
+    tra_data_hora_entrega   datetime        not null,
+    tra_local_arquivo       varchar(200)    not null,
+    pro_avaliador_id        bigint unsigned,
+    constraint tra_pro_fk   foreign key (pro_avaliador_id)
+    references pro_professor (pro_id)
 );
+
 create table ent_entrega (
 alu_id bigint unsigned,
 tra_id bigint unsigned,
