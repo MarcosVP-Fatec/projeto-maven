@@ -1,6 +1,6 @@
 /**
  * Uasr a expressão abaixo para executar pelo maven
- *
+ * mvn exec:java -Dexec.mainClass="br.gov.sp.fatec.projetomaven.App"
  */
 package br.gov.sp.fatec.projetomaven;
 
@@ -24,12 +24,15 @@ public class App
         // Aluno
         try {
             em.getTransaction().begin();
-            
-            aluno = new Aluno("Marcos Vinicio Pereira","pwmvp",1L);
-            em.persist( aluno );
+            System.out.println("#################################### ALUNOS #########################################");
+            System.out.println("### MARCOS ##########################################################################");
+            aluno = new Aluno("Marcos Vinicio Pereira","pwmvp",1L);            em.persist( aluno );
+            System.out.println("### RAYAN ###########################################################################");
+            aluno = new Aluno("Raian Silva Damaceno"  ,"pwrsd",2L);            em.persist( aluno );
             em.getTransaction().commit();
             System.out.println("Inseriu o aluno " + aluno.getId() );
         } catch (Exception e) {
+            e.printStackTrace();;
             em.getTransaction().rollback();
         }
 
