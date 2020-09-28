@@ -16,10 +16,13 @@ import br.gov.sp.fatec.projetomaven.model.entity.Aluno;
 import br.gov.sp.fatec.projetomaven.model.entity.Professor;
 import br.gov.sp.fatec.projetomaven.model.entity.Trabalho;
 
+
+
 public class App 
 {
     public static void main( String[] args )
     {
+        
         System.out.println("############################# INÍCIO #############################");
 
         // Criação da fábrica
@@ -32,10 +35,15 @@ public class App
             em.getTransaction().begin();
 
             System.out.println("#################################### ALUNOS #########################################");
+            
             System.out.println("### MARCOS ##########################################################################");
-            aluno = new Aluno("Marcos Vinicio Pereira","pwmvp",1L);            em.persist( aluno );
+                aluno = new Aluno("Marcos Vinicio Pereira","pwmvp" ,1111L);            em.persist( aluno );
+            
             System.out.println("### RAYAN ###########################################################################");
-            aluno = new Aluno("Raian Silva Damaceno"  ,"pwrsd",2L);            em.persist( aluno );
+                aluno = new Aluno("Raian Silva Damaceno"  ,"pwrsd" ,2222L);            em.persist( aluno );
+
+            System.out.println("### SUPER DÍNAMO ####################################################################");
+                aluno = new Aluno("Dínamo Número Um"      ,"pwsdnu",3333L);           em.persist( aluno );
 
             em.getTransaction().commit();
 
@@ -50,10 +58,13 @@ public class App
             em.getTransaction().begin();
 
             System.out.println("#################################### PROFESSORES #########################################");
+            
             System.out.println("### MINEDA ##########################################################################");
-            professor = new Professor("Emanuel Mineda","pwem","Mestre");        em.persist( professor );
-            System.out.println("### Eduardo Sakaue ##################################################################");
-            professor = new Professor("Eduardo Sakaue","pwes");                 em.persist( professor );
+                professor = new Professor("Emanuel Mineda","pwem","Mestre");        em.persist( professor );
+                System.out.println(">>> ID do Primeiro professor cadastrado => " + professor.getId());
+
+            System.out.println("### SAKAUE ##########################################################################");
+                professor = new Professor("Eduardo Sakaue","pwes");                 em.persist( professor );
 
             em.getTransaction().commit();
 
@@ -64,20 +75,54 @@ public class App
 
         // TRABALHOS
         Trabalho trabalho;
-        //em.clear();
         try {
-            em.getTransaction().begin();
-
             System.out.println("#################################### TRABALHOS ######################################");
             System.out.println("### Trabalho JPA ####################################################################");
             
-            professor = em.find(Professor.class, 1L);
-            System.out.println("Professor " + professor.getId() + " - " + professor.getNomeUsuario());
+            em.clear();
+            em.getTransaction().begin();
+            professor = em.find(Professor.class, 4L);
+            System.out.println(">>> Professor => " + professor.getId() + " - " + professor.getNomeUsuario());
 
-            aluno = em.find(Aluno.class, 1L);
-            System.out.println("Alunor " + aluno.getId() + " - " + aluno.getNomeUsuario());
+            trabalho = new Trabalho("Trabalho 2 LAB IV - JPA", new Date(), "trabalhos");
+            trabalho.setProfessorAvaliador(professor); //Não funcionou usando o construtor de trabalho que insere o professor direto
+            System.out.println("TRABALHO/AVALIADOR = " + trabalho.getProfessorAvaliador().getNomeUsuario());
 
-            trabalho = new Trabalho("Trabalho 2 LAV IV - JPA", new Date(), "trabalhos");
+            trabalho.setAlunos(new HashSet<Aluno>());
+            trabalho.getAlunos().add( em.find(Aluno.class, 1L) );
+            trabalho.getAlunos().add( em.find(Aluno.class, 3L) );
+            trabalho.getAlunos().add( em.find(Aluno.class, 2L) );
+
+            em.persist(trabalho);
+            em.getTransaction().commit();
+
+            System.out.println("### Trabalho TESTE ####################################################################");
+            
+            em.clear();
+            em.getTransaction().begin();
+            professor = em.find(Professor.class, 4L);
+            System.out.println(">>> Professor => " + professor.getId() + " - " + professor.getNomeUsuario());
+
+            trabalho = new Trabalho("Trabalho 2 LAB IV - TESTE", new Date(), "trabalhos");
+            trabalho.setProfessorAvaliador(professor); //Não funcionou usando o construtor de trabalho que insere o professor direto
+            System.out.println("TRABALHO/AVALIADOR = " + trabalho.getProfessorAvaliador().getNomeUsuario());
+
+            trabalho.setAlunos(new HashSet<Aluno>());
+            trabalho.getAlunos().add( em.find(Aluno.class, 1L) );
+            trabalho.getAlunos().add( em.find(Aluno.class, 2L) );
+            trabalho.getAlunos().add( em.find(Aluno.class, 3L) );
+
+            em.persist(trabalho);
+            em.getTransaction().commit();
+
+            System.out.println("### Trabalho Maven ####################################################################");
+            
+            em.clear();
+            em.getTransaction().begin();
+            professor = em.find(Professor.class, 4L);
+            System.out.println(">>> Professor => " + professor.getId() + " - " + professor.getNomeUsuario());
+
+            trabalho = new Trabalho("Trabalho 2 LAB IV - MAVEN", new Date(), "trabalhos");
             trabalho.setProfessorAvaliador(professor); //Não funcionou usando o construtor de trabalho que insere o professor direto
             System.out.println("TRABALHO/AVALIADOR = " + trabalho.getProfessorAvaliador().getNomeUsuario());
 
@@ -88,11 +133,36 @@ public class App
             em.persist(trabalho);
             em.getTransaction().commit();
 
-
         } catch (PersistenceException e) {
             e.printStackTrace();
             em.getTransaction().rollback();
         }
+
+        // TRABALHOS - EXCLUI O Trabalho TESTE
+        try {
+
+            System.out.println("### EXCLUSÃO doTrabalho TESTE ####################################################################");
+            
+
+            trabalho = em.find(Trabalho.class, 2L);
+            trabalho.setAlunos(null);
+            trabalho.setProfessorAvaliador(null);
+
+            em.clear();
+            em.getTransaction().begin();
+
+            em.remove(trabalho);
+            for(Aluno temp : trabalho.getAlunos()){
+                em.remove(temp);
+            }
+
+            em.getTransaction().commit();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        }
+
 
         // Fecha a fábrica
         em.close();

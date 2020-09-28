@@ -1,5 +1,5 @@
-br/gov/sp/fatec/projetomaven/model/entity/Trabalho.class
 br/gov/sp/fatec/projetomaven/model/entity/Professor.class
-br/gov/sp/fatec/projetomaven/App.class
 br/gov/sp/fatec/projetomaven/model/entity/Aluno.class
 br/gov/sp/fatec/projetomaven/Mvp.class
+br/gov/sp/fatec/projetomaven/model/entity/Trabalho.class
+br/gov/sp/fatec/projetomaven/App.class

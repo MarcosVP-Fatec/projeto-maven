@@ -10,6 +10,7 @@
         <class>br.gov.sp.fatec.projeto-maven.entity.Aluno</class>
         <class>br.gov.sp.fatec.projeto-maven.entity.Professor</class>
         <class>br.gov.sp.fatec.projeto-maven.entity.Trabalho</class>
+        <class>br.gov.sp.fatec.projeto-maven.entity.Usuario</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver"

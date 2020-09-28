@@ -48,6 +48,8 @@ public class Trabalho {
     /** 
      * Construtor
     */
+    public Trabalho(){}
+    
     public Trabalho(String titulo
                   , Date dataHoraEntrega
                   , String localArquivo
