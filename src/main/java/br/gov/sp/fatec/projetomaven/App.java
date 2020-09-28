@@ -4,6 +4,9 @@
  */
 package br.gov.sp.fatec.projetomaven;
 
+import java.util.Date;
+import java.util.HashSet;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -11,6 +14,7 @@ import javax.persistence.PersistenceException;
 
 import br.gov.sp.fatec.projetomaven.model.entity.Aluno;
 import br.gov.sp.fatec.projetomaven.model.entity.Professor;
+import br.gov.sp.fatec.projetomaven.model.entity.Trabalho;
 
 public class App 
 {
@@ -23,7 +27,7 @@ public class App
         EntityManager em = factory.createEntityManager();
 
         Aluno aluno;
-        // Aluno
+        // ALUNOS
         try {
             em.getTransaction().begin();
 
@@ -36,12 +40,12 @@ public class App
             em.getTransaction().commit();
 
         } catch (PersistenceException e) {
-            e.printStackTrace();;
+            e.printStackTrace();
             em.getTransaction().rollback();
         }
 
+        // PROFESSORES
         Professor professor;
-        // Aluno
         try {
             em.getTransaction().begin();
 
@@ -54,7 +58,39 @@ public class App
             em.getTransaction().commit();
 
         } catch (PersistenceException e) {
-            e.printStackTrace();;
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        }
+
+        // TRABALHOS
+        Trabalho trabalho;
+        //em.clear();
+        try {
+            em.getTransaction().begin();
+
+            System.out.println("#################################### TRABALHOS ######################################");
+            System.out.println("### Trabalho JPA ####################################################################");
+            
+            professor = em.find(Professor.class, 1L);
+            System.out.println("Professor " + professor.getId() + " - " + professor.getNomeUsuario());
+
+            aluno = em.find(Aluno.class, 1L);
+            System.out.println("Alunor " + aluno.getId() + " - " + aluno.getNomeUsuario());
+
+            trabalho = new Trabalho("Trabalho 2 LAV IV - JPA", new Date(), "trabalhos");
+            trabalho.setProfessorAvaliador(professor); //Não funcionou usando o construtor de trabalho que insere o professor direto
+            System.out.println("TRABALHO/AVALIADOR = " + trabalho.getProfessorAvaliador().getNomeUsuario());
+
+            trabalho.setAlunos(new HashSet<Aluno>());
+            trabalho.getAlunos().add( em.find(Aluno.class, 1L) );
+            trabalho.getAlunos().add( em.find(Aluno.class, 2L) );
+
+            em.persist(trabalho);
+            em.getTransaction().commit();
+
+
+        } catch (PersistenceException e) {
+            e.printStackTrace();
             em.getTransaction().rollback();
         }
 

@@ -38,12 +38,14 @@ create table tra_trabalho (
     references pro_professor (pro_id)
 );
 
+-- ENTREGA
+-- Não tem atributos próprios
 create table ent_entrega (
-alu_id bigint unsigned,
-tra_id bigint unsigned,
-primary key (alu_id, tra_id),
-constraint ent_alu_fk foreign key (alu_id)
-references alu_aluno (alu_id),
-constraint ent_tra_fk foreign key (tra_id)
-references tra_trabalho (tra_id)
+    alu_id bigint unsigned,
+    tra_id bigint unsigned,
+    primary key (alu_id, tra_id),
+    constraint ent_alu_fk foreign key (alu_id)
+        references alu_aluno (alu_id),
+    constraint ent_tra_fk foreign key (tra_id)
+        references tra_trabalho (tra_id)
 );
