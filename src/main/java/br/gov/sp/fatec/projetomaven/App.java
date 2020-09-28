@@ -138,24 +138,28 @@ public class App
             em.getTransaction().rollback();
         }
 
+        try {
+            
+            System.out.println("### TESTE DE ALTERAÇÃO ####################################################################");
+            trabalho = em.find(Trabalho.class,3L);
+            trabalho.setLocalArquivo("c:/temp/teste.pdf");
+            em.getTransaction().begin();
+            em.getTransaction().commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+
+        }
+
         // TRABALHOS - EXCLUI O Trabalho TESTE
         try {
 
-            System.out.println("### EXCLUSÃO doTrabalho TESTE ####################################################################");
+            System.out.println("### EXCLUSÃO do Trabalho TESTE ####################################################################");
             
-
             trabalho = em.find(Trabalho.class, 2L);
-            trabalho.setAlunos(null);
-            trabalho.setProfessorAvaliador(null);
-
-            em.clear();
             em.getTransaction().begin();
-
             em.remove(trabalho);
-            for(Aluno temp : trabalho.getAlunos()){
-                em.remove(temp);
-            }
-
             em.getTransaction().commit();
             
         } catch (Exception e) {
@@ -164,11 +168,9 @@ public class App
         }
 
 
-        // Fecha a fábrica
+        //Fecha a fábrica 
         em.close();
         factory.close();
-
-
         System.out.println("#############################   FIM  #############################");
 
     }
