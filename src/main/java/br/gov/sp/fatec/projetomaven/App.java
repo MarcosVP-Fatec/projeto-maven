@@ -9,8 +9,6 @@ import java.util.HashSet;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
@@ -18,8 +16,6 @@ import br.gov.sp.fatec.projetomaven.model.PersistenceManager;
 import br.gov.sp.fatec.projetomaven.model.entity.Aluno;
 import br.gov.sp.fatec.projetomaven.model.entity.Professor;
 import br.gov.sp.fatec.projetomaven.model.entity.Trabalho;
-
-
 
 public class App 
 {
@@ -237,6 +233,7 @@ public class App
         //Fecha a fábrica 
         em.close();
         System.out.println("#############################   FIM  #############################");
+        Mvp.printEnd();
 
     }
 }

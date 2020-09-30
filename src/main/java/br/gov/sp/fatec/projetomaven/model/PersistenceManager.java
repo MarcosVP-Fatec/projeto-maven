@@ -1,5 +1,9 @@
 package br.gov.sp.fatec.projetomaven.model;
-
+/**
+ * Padrão de projeto SINGLETON
+ * Usado toda vez que você precisa de uma única instância de algo.
+ * 
+ */
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -28,7 +32,7 @@ public class PersistenceManager {
     }
 
     public EntityManagerFactory getEntityManagerFactory() {
-        if (emf == null) Persistence.createEntityManagerFactory("avaliacao"); 
+        if (emf == null) emf = Persistence.createEntityManagerFactory("avaliacao"); 
         return emf;
     }
 
