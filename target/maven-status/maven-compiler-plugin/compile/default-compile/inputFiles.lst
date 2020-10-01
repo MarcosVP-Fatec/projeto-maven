@@ -2,5 +2,12 @@
 /workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/entity/Trabalho.java
 /workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/Mvp.java
 /workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/App.java
-/workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/entity/Aluno.java
 /workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/entity/Professor.java
+/workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/dao/ProfessorDaoJpa.java
+/workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/dao/AlunoDao.java
+/workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/dao/ProfessorDao.java
+/workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/dao/TrabalhoDao.java
+/workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/PersistenceManager.java
+/workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/entity/Aluno.java
+/workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/dao/TrabalhoDaoJpa.java
+/workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/dao/AlunoDaoJpa.java

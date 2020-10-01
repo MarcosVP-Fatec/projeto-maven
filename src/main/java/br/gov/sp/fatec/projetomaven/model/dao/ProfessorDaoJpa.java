@@ -70,7 +70,7 @@ public class ProfessorDaoJpa implements ProfessorDao {
     }
 
     /**
-     * @apiNote buscarProfessorPorNomeUsuario(String nomeUsuario)
+     * @apiNote removerProfessorPorNomeUsuario(String nomeUsuario)
      * Remove um professor a partir do seu nome de usuário
      * @return void
      */

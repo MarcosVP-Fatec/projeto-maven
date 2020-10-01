@@ -50,19 +50,19 @@ public class Trabalho {
     */
     public Trabalho(){}
     
-    public Trabalho(String titulo
-                  , Date dataHoraEntrega
-                  , String localArquivo
-                  , Professor professorAvaliadorId) {
+    public Trabalho(String      titulo
+                  , Date        dataHoraEntrega
+                  , String      localArquivo
+                  , Professor   professorAvaliadorId) {
         setTitulo(titulo);
         setDataHoraEntrega(dataHoraEntrega);
         setLocalArquivo(localArquivo);
         setProfessorAvaliador(professorAvaliador);
     }
 
-    public Trabalho(String titulo
-                  , Date dataHoraEntrega
-                  , String localArquivo) {
+    public Trabalho(String      titulo
+                  , Date        dataHoraEntrega
+                  , String      localArquivo) {
         setTitulo(titulo);
         setDataHoraEntrega(dataHoraEntrega);
         setLocalArquivo(localArquivo);
