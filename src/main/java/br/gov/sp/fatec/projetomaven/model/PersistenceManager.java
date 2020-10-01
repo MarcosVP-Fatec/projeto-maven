@@ -19,6 +19,7 @@ public class PersistenceManager {
     private PersistenceManager () {    }
 
     protected EntityManagerFactory emf;
+    protected EntityManager em;
     
     /**
      * O método getInstance() é a essência do singleton
@@ -37,7 +38,8 @@ public class PersistenceManager {
     }
 
     public EntityManager getEntityManager() {
-        return getEntityManagerFactory().createEntityManager();
+        if (em == null) em = getEntityManagerFactory().createEntityManager();
+        return em;
     }
  
 }
