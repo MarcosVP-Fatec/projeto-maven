@@ -26,17 +26,30 @@ public class AlunoDaoJpa implements AlunoDao {
      */
     @Override
     public Aluno cadastrarAluno(String nomeUsuario, String senha, Long ra) {
-        Aluno aluno = new Aluno(nomeUsuario, senha, ra);
+        return salvarAluno( new Aluno(nomeUsuario, senha, ra) );
+    }
+
+    /**
+     * @apiNote salvarAluno( Aluno aluno )
+     * Faz um update na entidade Aluno
+     * @return Aluno
+     */
+    @Override
+    public Aluno salvarAluno(Aluno aluno) {
         try {
             em.getTransaction().begin();
-            em.persist(aluno);
+            if (aluno.getId()==null){
+                em.persist(aluno);
+            } else {
+                em.merge(aluno);
+            }
             em.getTransaction().commit();
-            return aluno;
         } catch (PersistenceException e) {
             em.getTransaction().rollback();
             e.printStackTrace();
+            throw new RuntimeException("Erro ao salvar o aluno" + (aluno.getId()==null?"!":" " + aluno.getNomeUsuario() + "!"), e);
         }
-        return null;
+        return aluno;
     }
 
     /**
@@ -52,29 +65,18 @@ public class AlunoDaoJpa implements AlunoDao {
         return query.getSingleResult();
     }
 
-    @Override
-    public void removerAluno(Long ra) {
-        // TODO Auto-generated method stub
-
-    }
-
     /**
-     * @apiNote salvarAluno( Aluno aluno )
-     * Faz um update na entidade Aluno
-     * @return Aluno
+     * @apiNote buscarAlunoPorRa(Long ra)
+     * Remove um aluno a partir do seu ra
+     * @return void
      */
     @Override
-    public Aluno salvarAluno(Aluno aluno) {
-        try {
-
-            em.getTransaction().begin();
-            
-            
-        } catch (PersisteException e) {
-            em.getTransaction().rollback();
-            e.printStackTrace();
-        }
-        return aluno;
+    public void removerAlunoPorRa(Long ra) {
+        Aluno aluno = buscarAlunoPorRa(ra);
+        if (aluno.getId() == null) throw new RuntimeException("Aluno não cadastrado => RA " + ra + "!");
+        em.getTransaction().begin();
+        em.remove(aluno);
+        em.getTransaction().commit();
     }
-    
+
 }

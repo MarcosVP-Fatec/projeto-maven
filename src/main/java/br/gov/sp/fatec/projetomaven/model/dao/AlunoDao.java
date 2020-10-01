@@ -10,5 +10,5 @@ public interface AlunoDao {
 
     public Aluno buscarAlunoPorRa(Long ra);
 
-    public void removerAluno(Long ra);
+    public void removerAlunoPorRa(Long ra);
 }
