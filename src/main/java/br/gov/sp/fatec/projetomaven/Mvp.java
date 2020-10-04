@@ -38,7 +38,7 @@ public class Mvp {
     public static Date toDate(String sData) throws ParseException {
     
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
-        Date data = formato.parse("23/11/2015");        //    return (Date) new SimpleDateFormat("dd/MM/yyyy").parse( sData );         
+        Date data = formato.parse(sData);        //    return (Date) new SimpleDateFormat("dd/MM/yyyy").parse( sData );         
         return data;
     }
     

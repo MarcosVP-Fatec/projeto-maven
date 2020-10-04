@@ -3,12 +3,10 @@ package br.gov.sp.fatec.projetomaven.model.entity;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -19,11 +17,9 @@ import br.gov.sp.fatec.projetomaven.Mvp;
 
 @Table(name = "tra_trabalho")
 @Entity
-public class Trabalho {
+@AttributeOverride(name="id", column=@Column(name="tra_id"))
+public class Trabalho extends IdPadrao{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tra_id")                private Long    id;
     @Column(name = "tra_titulo")            private String  titulo;
     @Column(name = "tra_data_hora_entrega") private Date    dataHoraEntrega;
     @Column(name = "tra_local_arquivo")     private String  localArquivo;
@@ -66,14 +62,6 @@ public class Trabalho {
         setTitulo(titulo);
         setDataHoraEntrega(dataHoraEntrega);
         setLocalArquivo(localArquivo);
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTitulo() {

@@ -188,6 +188,7 @@ public class App
                     "### EXCLUSÃO do Trabalho TESTE ####################################################################");
 
             trabalho = em.find(Trabalho.class, 2L);
+            
             em.getTransaction().begin();
             em.remove(trabalho);
             em.getTransaction().commit();
