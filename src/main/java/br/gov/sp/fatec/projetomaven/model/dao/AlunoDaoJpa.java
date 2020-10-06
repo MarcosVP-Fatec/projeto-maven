@@ -38,11 +38,7 @@ public class AlunoDaoJpa implements AlunoDao {
     public Aluno salvarAluno(Aluno aluno) {
         try {
             em.getTransaction().begin();
-            if (aluno.getId()==null){
-                em.persist(aluno);
-            } else {
-                em.merge(aluno);
-            }
+            salvarAlunoSemCommit(aluno);
             em.getTransaction().commit();
         } catch (PersistenceException e) {
             em.getTransaction().rollback();
@@ -52,6 +48,15 @@ public class AlunoDaoJpa implements AlunoDao {
         return aluno;
     }
 
+    @Override
+    public Aluno salvarAlunoSemCommit(Aluno aluno) {
+        if (aluno.getId()==null){
+            em.persist(aluno);
+        } else {
+            em.merge(aluno);
+        }
+        return aluno;
+    }
     /**
      * @apiNote buscarAlunoPorRa(Long ra)
      * Faz uma pesquisa do aluno por ra.
@@ -59,7 +64,7 @@ public class AlunoDaoJpa implements AlunoDao {
      */
     @Override
     public Aluno buscarAlunoPorRa(Long ra) {
-        String jpql = "select a from aluno a where a.ra = :ra";
+        String jpql = "select a from Aluno a where a.ra = :ra";
         TypedQuery<Aluno> query = em.createQuery(jpql, Aluno.class);
         query.setParameter("ra", ra);
         return query.getSingleResult();

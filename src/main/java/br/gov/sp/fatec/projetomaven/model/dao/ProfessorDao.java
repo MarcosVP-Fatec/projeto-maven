@@ -10,6 +10,8 @@ public interface ProfessorDao {
 
     public Professor salvarProfessor(Professor professor);
 
+    public Professor salvarProfessorSemCommit(Professor professor);
+
     public Professor buscarProfessorPorNomeUsuario(String nomeUsuario);
 
     public void removerProfessorPorNomeUsuario(String nomeUsuario);

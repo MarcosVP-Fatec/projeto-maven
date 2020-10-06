@@ -39,14 +39,20 @@ public class ProfessorDaoJpa implements ProfessorDao {
      * @return Professor
      */
     @Override
+    public Professor salvarProfessorSemCommit(Professor professor) {
+        if (professor.getId()==null){
+            em.persist(professor);
+        } else {
+            em.merge(professor);
+        }
+        return professor;
+    }
+
+    @Override
     public Professor salvarProfessor(Professor professor) {
         try {
             em.getTransaction().begin();
-            if (professor.getId()==null){
-                em.persist(professor);
-            } else {
-                em.merge(professor);
-            }
+            salvarProfessorSemCommit(professor);
             em.getTransaction().commit();
         } catch (PersistenceException e) {
             em.getTransaction().rollback();
@@ -63,7 +69,7 @@ public class ProfessorDaoJpa implements ProfessorDao {
      */
     @Override
     public Professor buscarProfessorPorNomeUsuario(String nomeUsuario) {
-        String jpql = "select p from professor p where p.nomeUsuario = :nomeUsuario";
+        String jpql = "select p from Professor p where p.nomeUsuario = :nomeUsuario";
         TypedQuery<Professor> query = em.createQuery(jpql, Professor.class);
         query.setParameter("nomeUsuario", nomeUsuario);
         return query.getSingleResult();

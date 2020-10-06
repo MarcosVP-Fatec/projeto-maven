@@ -4,6 +4,7 @@
  */
 package br.gov.sp.fatec.projetomaven;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -13,13 +14,16 @@ import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import br.gov.sp.fatec.projetomaven.model.PersistenceManager;
+import br.gov.sp.fatec.projetomaven.model.dao.AlunoDao;
+import br.gov.sp.fatec.projetomaven.model.dao.AlunoDaoJpa;
+import br.gov.sp.fatec.projetomaven.model.dao.TrabalhoDao;
+import br.gov.sp.fatec.projetomaven.model.dao.TrabalhoDaoJpa;
 import br.gov.sp.fatec.projetomaven.model.entity.Aluno;
 import br.gov.sp.fatec.projetomaven.model.entity.Professor;
 import br.gov.sp.fatec.projetomaven.model.entity.Trabalho;
 
-public class App 
-{
-    public static void main( final String[] args) {
+public class App {
+    public static void main(final String[] args) throws ParseException {
 
         System.out.println("############################# INÍCIO #############################");
 
@@ -126,8 +130,7 @@ public class App
             em.persist(trabalho);
             em.getTransaction().commit();
 
-            System.out
-                    .println("### Trabalho Maven ####################################################################");
+            System.out.println("### Trabalho Maven ####################################################################");
 
             em.clear();
             em.getTransaction().begin();
@@ -229,7 +232,18 @@ public class App
             System.out.println("Título: " + temp.getTitulo() );
         }
         System.out.println("--------------------------------------------------------------");
+        System.out.println("### ALUNOS + PROFESSOR + TRABALHO usando DAO ####################################################################");
+        professor = new Professor("Fabiano Sabha", "pwfs");
+        trabalho = new Trabalho("Sistema Operacional", Mvp.toDate("30/10/2020"), "c:/temp/Tralaho SO.pptx", professor);
+        trabalho.setAlunos(new HashSet<Aluno>());
+        trabalho.getAlunos().add(new Aluno("Júlia Régia", "pwjr", 4444L) );
+        AlunoDao alunoDao = new AlunoDaoJpa(em);
+        trabalho.getAlunos().add( alunoDao.buscarAlunoPorRa( 1111L ));
+        trabalho.getAlunos().add( alunoDao.buscarAlunoPorRa( 3333L ));
+        TrabalhoDao trabalhoDao = new TrabalhoDaoJpa(em);
+        trabalhoDao.salvarTrabalho(trabalho);
 
+        System.out.println("--------------------------------------------------------------");
 
         //Fecha a fábrica 
         em.close();

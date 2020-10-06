@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 
 import br.gov.sp.fatec.projetomaven.model.PersistenceManager;
+import br.gov.sp.fatec.projetomaven.model.entity.Aluno;
 import br.gov.sp.fatec.projetomaven.model.entity.Trabalho;
 
 public class TrabalhoDaoJpa implements TrabalhoDao {
@@ -27,6 +28,23 @@ public class TrabalhoDaoJpa implements TrabalhoDao {
     public Trabalho salvarTrabalho(Trabalho trabalho) {
         try {
             em.getTransaction().begin();
+
+            // Verifica o Professor
+            if (trabalho.getProfessorAvaliador() != null && trabalho.getProfessorAvaliador().getId() == null ){
+                ProfessorDao professorDao = new ProfessorDaoJpa(em);
+                professorDao.salvarProfessorSemCommit(trabalho.getProfessorAvaliador());
+            }
+
+            //Verifica o Aluno
+            if (trabalho.getAlunos() != null && !trabalho.getAlunos().isEmpty() ){
+                AlunoDao alunoDao = new AlunoDaoJpa(em);
+                for(Aluno aluno : trabalho.getAlunos() ){
+                    if (aluno.getId() == null){
+                        alunoDao.salvarAlunoSemCommit(aluno);
+                    }
+                }
+            }
+
             if (trabalho.getId()==null){
                 em.persist(trabalho);
             } else {

@@ -26,11 +26,6 @@ public class UsuarioLogado {
      * @return instance
      */
     public static UsuarioLogado usuario() {
-        /*
-        if (usuario == null) {
-            //TODO
-            this.nome = "Usuário Teste";
-        }*/
         return usuario;
     }
 
