@@ -1,5 +1,16 @@
+br/gov/sp/fatec/projetomaven/model/dao/ProfessorDaoJpa.class
+br/gov/sp/fatec/projetomaven/model/dao/ProfessorDao.class
+br/gov/sp/fatec/projetomaven/model/entity/Usuario.class
 br/gov/sp/fatec/projetomaven/model/entity/Professor.class
 br/gov/sp/fatec/projetomaven/model/entity/Aluno.class
 br/gov/sp/fatec/projetomaven/Mvp.class
+br/gov/sp/fatec/projetomaven/model/entity/Auditoria.class
+br/gov/sp/fatec/projetomaven/model/dao/TrabalhoDao.class
+br/gov/sp/fatec/projetomaven/model/PersistenceManager.class
+br/gov/sp/fatec/projetomaven/model/dao/TrabalhoDaoJpa.class
+br/gov/sp/fatec/projetomaven/model/entity/IdPadrao.class
+br/gov/sp/fatec/projetomaven/model/UsuarioLogado.class
 br/gov/sp/fatec/projetomaven/model/entity/Trabalho.class
+br/gov/sp/fatec/projetomaven/model/dao/AlunoDao.class
 br/gov/sp/fatec/projetomaven/App.class
+br/gov/sp/fatec/projetomaven/model/dao/AlunoDaoJpa.class
