@@ -25,7 +25,7 @@
             <version>5.4.16.Final</version>
         </dependency>
 
-        <!-- ##### ##### -->
+        <!-- ##### CONECTOR MYSQL ##### -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -36,6 +36,17 @@
 	<build>
 		<finalName>projeto-maven</finalName>
 		<plugins>
+            <!-- ##### TOMCAT ##### -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <url>http://localhost:8080/manager/text</url>
+                </configuration>
+            </plugin>
+            
+            <!-- ##### MAVEN ##### -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
