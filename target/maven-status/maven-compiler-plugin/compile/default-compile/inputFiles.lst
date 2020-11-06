@@ -3,6 +3,7 @@
 /workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/Mvp.java
 /workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/UsuarioLogado.java
 /workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/App.java
+/workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/controller/MainController.java
 /workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/entity/Professor.java
 /workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/dao/AlunoDao.java
 /workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/dao/ProfessorDaoJpa.java

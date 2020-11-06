@@ -11,6 +11,7 @@ br/gov/sp/fatec/projetomaven/model/dao/TrabalhoDaoJpa.class
 br/gov/sp/fatec/projetomaven/model/entity/IdPadrao.class
 br/gov/sp/fatec/projetomaven/model/UsuarioLogado.class
 br/gov/sp/fatec/projetomaven/model/entity/Trabalho.class
+br/gov/sp/fatec/projetomaven/controller/MainController.class
 br/gov/sp/fatec/projetomaven/model/dao/AlunoDao.class
 br/gov/sp/fatec/projetomaven/App.class
 br/gov/sp/fatec/projetomaven/model/dao/AlunoDaoJpa.class
