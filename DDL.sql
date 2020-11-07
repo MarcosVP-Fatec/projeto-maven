@@ -1,6 +1,6 @@
 -- Exclui tudo para recriar
-drop schema if exists avaliacao;
-drop user if exists 'user'@'localhost';
+-- drop schema if exists avaliacao;
+-- drop user if exists 'user'@'localhost';
 
 -- cria schema e usuário
 create schema avaliacao;

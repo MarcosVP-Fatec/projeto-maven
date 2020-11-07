@@ -9,6 +9,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.gov.sp.fatec.projetomaven.Mvp;
 
 @Table(name = "pro_professor")
@@ -22,6 +24,7 @@ public class Professor extends Usuario {
     //O Hibernate não trabalha bem com List
     //LAZY porque não quero carregar todos os trabalhos do professor sempre
     //
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "professorAvaliador")
     private Set<Trabalho> trabalhosAvaliados;
 

@@ -39,7 +39,13 @@
             <version>4.0.1</version>
             <scope>provided</scope> <!-- Significa que nosso servlet container já tem - jetty ou tomcat , não precisa colocar no war -->
         </dependency>    
-
+        
+        <!-- ##### JACKSON - BIBLIOTECA JASON ##### -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.11.1</version>
+        </dependency>
     </dependencies>
   
 	<build>
