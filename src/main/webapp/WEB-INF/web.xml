@@ -18,11 +18,11 @@
     <!-- O mapping indica em qual url o servelet vai atender -->
     <servlet-mapping>
         <servlet-name>mainServlet</servlet-name>
-        <url-pattern>/</url-pattern> <!-- Por responder dentro do / deletamoso o index.jsp -->
+        <url-pattern>/</url-pattern> <!-- Por responder dentro do / deletamos o index.jsp -->
     </servlet-mapping>  
     <servlet-mapping>
         <servlet-name>trabalhoServlet</servlet-name>
-        <url-pattern>/trabalho</url-pattern> <!-- Por responder dentro do / deletamoso o index.jsp -->
+        <url-pattern>/trabalho</url-pattern> 
     </servlet-mapping>  
 
 </web-app>
