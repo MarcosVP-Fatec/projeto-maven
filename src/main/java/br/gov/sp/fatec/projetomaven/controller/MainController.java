@@ -18,6 +18,7 @@ public class MainController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+        
         resp.getWriter().print("<h1>Bem vindo!</h1>"); /*Isso coloca o texto no corpo da resposta*/
     }    
     
