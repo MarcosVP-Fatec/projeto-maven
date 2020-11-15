@@ -5,6 +5,7 @@ br/gov/sp/fatec/projetomaven/model/entity/Usuario.class
 br/gov/sp/fatec/projetomaven/model/entity/Aluno.class
 br/gov/sp/fatec/projetomaven/Mvp.class
 br/gov/sp/fatec/projetomaven/model/entity/Auditoria.class
+br/gov/sp/fatec/projetomaven/controller/CorsFilter.class
 br/gov/sp/fatec/projetomaven/model/dao/TrabalhoDao.class
 br/gov/sp/fatec/projetomaven/model/PersistenceManager.class
 br/gov/sp/fatec/projetomaven/controller/LogFilter.class

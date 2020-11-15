@@ -21,16 +21,17 @@ public class LogFilter implements Filter {
 
         this.context.log(">>>>>>>>>>>>>>>>>>>>>> Filtro acessado !");
         this.context.log(req.toString());
-        
+
         // Todo código aqui é executado antes da requisição chegar ao destino
         // Passa a requisição adiante
 
-        // * Necessário fazer um cast porque com ServletResponce eu não consigo ter acesso às características
+        // * Necessário fazer um cast porque com ServletResponce eu não consigo ter
+        // acesso às características
         // * da minha resposta nem da minha requisição
         HttpServletResponse resp = (HttpServletResponse) res;
         resp.addHeader("In", ">>>>>>>>>>>>>>>>>>>>>> Eu passei pelo filtro na entrada!");
-        //resp.addHeader("Usuario", "Mitces Valacae");
-        
+        // resp.addHeader("Usuario", "Mitces Valacae");
+
         chain.doFilter(req, res);
 
         // Todo código aqui é executado no retorno
@@ -44,8 +45,7 @@ public class LogFilter implements Filter {
     }
 
     /**
-     * @apiNote init
-     * Contrutor do Filtro
+     * @apiNote init Contrutor do Filtro
      */
     @Override
     public void init(FilterConfig config) throws ServletException {

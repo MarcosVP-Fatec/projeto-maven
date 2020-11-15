@@ -13,6 +13,7 @@
 /workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/dao/TrabalhoDao.java
 /workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/PersistenceManager.java
 /workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/entity/IdPadrao.java
+/workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/controller/CorsFilter.java
 /workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/entity/Aluno.java
 /workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/dao/TrabalhoDaoJpa.java
 /workspace/projeto-maven/src/main/java/br/gov/sp/fatec/projetomaven/model/dao/AlunoDaoJpa.java
