@@ -25,9 +25,11 @@ public class AuthFilter implements Filter {
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
             throws IOException, ServletException {
-        this.context.log("Filtro acessado!");
+
+        this.context.log("Filtro de autenticação acessado!");
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
+        
         // Verifica se tem o header Authorization
         String authHeader = request.getHeader("Authorization");
         if (authHeader != null) {
@@ -35,7 +37,7 @@ public class AuthFilter implements Filter {
             StringTokenizer st = new StringTokenizer(authHeader);
             // Se possui conteúdo
             if (st.hasMoreTokens()) {
-                String basic = st.nextToken();
+                String basic = st.nextToken(); //Basic sopadeletrinhas
                 // Verifica se possui o prefixo Basic
                 if (basic.equalsIgnoreCase("Basic")) {
                     try {
@@ -43,10 +45,10 @@ public class AuthFilter implements Filter {
                         String credentials = new String(Base64.getDecoder().decode(st.nextToken()));
                         this.context.log("Credentials: " + credentials);
                         // Separa as credenciais em usuario e senha
-                        Integer p = credentials.indexOf(":");
+                        Integer p = credentials.indexOf(":"); //Localiza o : na string
                         if (p != -1) {
                             String _username = credentials.substring(0, p).trim();
-                            String _password = credentials.substring(p + 1).trim();
+                            String _password = credentials.substring(p + 1).trim(); //Depois dos dois pontos.
                             // Se nao bate com configuracao retorna erro
                             if (!username.equals(_username) || !password.equals(_password)) {
                                 unauthorized(response, "Bad credentials");

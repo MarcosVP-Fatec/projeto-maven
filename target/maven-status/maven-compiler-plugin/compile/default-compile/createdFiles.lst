@@ -18,3 +18,4 @@ br/gov/sp/fatec/projetomaven/controller/TrabalhoController.class
 br/gov/sp/fatec/projetomaven/controller/MainController.class
 br/gov/sp/fatec/projetomaven/App.class
 br/gov/sp/fatec/projetomaven/model/dao/AlunoDaoJpa.class
+br/gov/sp/fatec/projetomaven/controller/AuthFilter.class
