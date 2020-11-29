@@ -5,16 +5,20 @@
       <button @click="incluir">Inserir</button>
     </p>
     <ul>
-      <li v-for="(curso, indice) in cursos" @click="excluir(indice)" :key="indice">
+      <app-curso-item v-for="(curso, indice) in cursos" @click="excluir(indice)" :key="indice">
         {{curso.nome}}
-      </li>
+      </app-curso-item>
     </ul>
   </div>
 </template>
 
 <script>
+import CursoItem from './components/CursoItem';
   export default {
     name: 'app',
+    components: {
+        'app-curso-item': CursoItem
+    },
     data() {
       return {
         novo: '',
