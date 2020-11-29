@@ -11,12 +11,12 @@
     export default {
         name: 'CursoItem',
         props: {
-            valueDoCursoItem: String
+            valueDoCursoItem: String //Entrada
         },
         methods: {
             itemClicado(evento){
                 // Este nome liClick substitui o @click no app.vue, mas usamos o nome padrão click => this.$emit('liClick',evento) 
-                this.$emit('click',evento) 
+                this.$emit('click',evento) //Saída
             }
         }
     }
