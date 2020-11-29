@@ -1,32 +1,43 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <p>Novo curso:
+      <input type="text" v-model="novo">
+      <button @click="incluir">Inserir</button>
+    </p>
+    <ul>
+      <li v-for="(curso, indice) in cursos" @click="excluir(indice)" :key="indice">
+        {{curso.nome}}
+      </li>
+    </ul>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+<script>
+  export default {
+    name: 'app',
+    data() {
+      return {
+        novo: '',
+        cursos: [
+          { nome: 'ADS'},
+          { nome: 'Banco de Dados'}
+        ]
+      }
+    },
+    methods: {
+      incluir() {
+        if(this.novo.trim().length == 0) {
+          alert('O nome do curso deve ser preenchido!');
+        } else {
+          this.cursos.push( { nome: this.novo } );
+          this.novo = '';
+        }
+      },
+      excluir(indice) {
+        if(confirm("Excluir da lista a opção << " + this.cursos[indice].nome + " >> ?")){
+          this.cursos.splice(indice , 1);
+        }
+      }
+    }
+  }
+</script>
