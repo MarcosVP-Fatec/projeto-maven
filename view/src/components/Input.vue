@@ -3,34 +3,45 @@
         <label for="numero1">Primeiro número </label>
         <input id="numero1"
                type="number"
-               :value="numero1"
-               @input="tratarNumero1"
+               v-model="numero1"
         />
+               <!-- :value="numero1"
+               @input="tratarNumero1" -->
 
         <label for="numero2"> Segundo número </label>
         <input id="numero2"
                type="number"
-               :value="numero2"
-               @input="tratarNumero2"
+               v-model="numero2"
         />
+               <!-- :value="numero2"
+               @input="tratarNumero2" -->
     </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
     name: 'Input',
-    props: {
-        numero1: Number,
-        numero2: Number
-    },
-    methods: {
-        tratarNumero1 (evento) {
-            this.$emit('inputNumero1',evento)
+    computed: {
+        numero1: {
+            get()      { return this.$store.state.numero1  },
+            set(valor) { this.setNumero1(valor)            }
         },
-        tratarNumero2 (evento) {
-            this.$emit('inputNumero2',evento)
+        numero2: {
+            get()      { return this.$store.state.numero2  },
+            set(valor) { this.setNumero2Delay(valor)       }
         }
     },
+    methods: {
+       ...mapMutations([
+           'setNumero1'
+       ]),
+       ...mapActions([
+           'setNumero2Delay'
+       ])
+
+    }
     
 }
 </script>
