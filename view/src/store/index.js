@@ -27,7 +27,8 @@ export default new Vuex.Store({
   ],  
   state: {
       numero1: 0,
-      numero2: 0
+      numero2: 0,
+      permiteNavegacao: true    
   },
   getters: {
      soma(state)             { return state.numero1 * 1 + state.numero2 * 1 }
@@ -37,6 +38,7 @@ export default new Vuex.Store({
   mutations: {
      setNumero1(state, valor) { state.numero1 = valor}
     ,setNumero2(state, valor) { state.numero2 = valor}
+    ,alterarPermiteNavegacao(state) { state.permiteNavegacao = !state.permiteNavegacao}
   },
   actions: {
       setNumero2Delay (context, valor) {
