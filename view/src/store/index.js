@@ -26,19 +26,23 @@ export default new Vuex.Store({
     vuexPersist.plugin
   ],  
   state: {
-      numero1: 0,
-      numero2: 0,
-      permiteNavegacao: true    
+      numero1: 0
+    , numero2: 0
+    , permiteNavegacao: true    
+    , usuario: ''
+    , senha: ''
   },
   getters: {
-     soma(state)             { return state.numero1 * 1 + state.numero2 * 1 }
-    ,subtracao(state)        { return state.numero1 - state.numero2         }
-    ,multiplicacao: state => { return state.numero1 * state.numero2         }
+      soma(state)             { return state.numero1 * 1 + state.numero2 * 1 }
+    , subtracao(state)        { return state.numero1 - state.numero2         }
+    , multiplicacao: state => { return state.numero1 * state.numero2         }
   },
   mutations: {
-     setNumero1(state, valor) { state.numero1 = valor}
-    ,setNumero2(state, valor) { state.numero2 = valor}
-    ,alterarPermiteNavegacao(state) { state.permiteNavegacao = !state.permiteNavegacao}
+      setNumero1(state, valor)      { state.numero1 = valor;                            }
+    , setNumero2(state, valor)      { state.numero2 = valor;                            }
+    , alterarPermiteNavegacao(state){ state.permiteNavegacao = !state.permiteNavegacao; }
+    , setUsuario(state, valor)      { state.usuario = valor;                            }
+    , setSenha(state, valor)        { state.senha = valor;                              }
   },
   actions: {
       setNumero2Delay (context, valor) {
