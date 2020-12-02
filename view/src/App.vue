@@ -1,38 +1,29 @@
 <template>
   <div id="app">
-    <app-input/>
-    <app-output/>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
 
-<script>
-    // Importa o componente 
-    // import CursoItem from './components/CursoItem';
-    import Input from './components/Input';
-    import Output from './components/Output';
-    export default {
-        name: 'app',
-        // Exporta o componente para ser usado
-        components: {
-            // 'app-curso-item': CursoItem, // O nome app-curso-item é para ser usado em tags html
-            'app-input': Input,
-            'app-output': Output
-        }
-        
-        // data() {
-        //     return {
-        //         componenteFixo: 'app-curso-item',
-        //         numero1: 0,
-        //         numero2: 0
-        //     }
-        // },
-        // methods: {
-        //     numero1Mudou(evento){
-        //         this.numero1 = evento.target.value;
-        //     },
-        //     numero2Mudou(evento){
-        //         this.numero2 = evento.target.value;
-        //     }
-        // }
-    }
-</script>
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+#nav {
+  padding: 30px;
+}
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
+</style>
