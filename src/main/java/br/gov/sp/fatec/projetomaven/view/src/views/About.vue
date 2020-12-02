@@ -36,7 +36,7 @@ export default {
                     axios.get('trabalho',
                              { params:     { id: 1},
                                headers:    { accept: 'application/json'}, //Quero receber um json
-                               auth:       { usename: this.nome, password: this.senha } //Minha autenticação
+                               auth:       { username: this.nome, password: this.senha } //Minha autenticação
                             }
                     ).then( res => { //Se deu tudo certo funncionou usuário e senha
                         console.log(res);

@@ -1,17 +1,21 @@
 <template>
-    <div>
+    <div class="trabalho">
+        <div>
         <form @submit.prevent="cadastrar"> 
             <h2>Trabalho</h2>
             <p>
-                <label for="titulo">Titulo</label>
+                <label for="titulo">Titulo: </label>
                 <input type="text" id = "titulo" required autofocus v-model="titulo">
             </p>
             <p>
-                <label for="localArquivo">Local do Arquivo</label>
+                <label for="localArquivo">Local do Arquivo: </label>
                 <input type="text" id = "localArquivo" required v-model="localArquivo">
             </p>
+            <button type="submit">Salvar</button>
         </form>
-        <br>
+        </div>
+
+        <div class="trabalho-tabela">    
         <table>
             <thead>
                 <th>Id</th>
@@ -28,6 +32,7 @@
                 </tr>
             </tbody>
         </table>
+        </div>
     </div>
 </template>
 
@@ -70,10 +75,22 @@ export default {
             ).then( res => {
                 console.log(res);
                 this.titulo='';
-                this.texto='';
+                this.localArquivo='';
                 this.trabalhos.push(res.data);
             }).catch( error => console.log(error))
         }
     }
 }
 </script>
+
+<style>
+    .trabalho {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .trabalho-tabela {
+        display: flex;
+        margin-top: 105px;
+    }
+</style>

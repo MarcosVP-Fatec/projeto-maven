@@ -6,6 +6,12 @@ import axios from 'axios'
 
 axios.defaults.baseURL = 'https://8080-cc8cd6b5-5602-49ca-9f27-86ce6e76e558.ws-us02.gitpod.io/'
 
+// axios.interceptors.request.use( config => {
+//     config.headers.Authorization = 'um token';
+//     return config;
+//   .
+// })
+
 Vue.config.productionTip = false
 
 new Vue({
